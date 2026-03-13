@@ -1,0 +1,119 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:rgb(237,231,166);
+    padding:40px 60px;
+}
+
+.gallery-container{
+    max-width:1200px;
+    background:rgba(249,250,237,0.95);
+    border-radius:5px;
+    padding:40px;
+    box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.gallery-header{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.gallery-header h1{
+    font-size:3rem;
+    font-weight:bold;
+    color:#333;
+    margin-bottom:10px;
+    position:relative;
+}
+/* for heading styel */
+.gallery-header h1::after{
+    content:'';
+    position:absolute;
+    bottom:-10px;
+    left:50%;
+    transform:translateX(-50%);
+    width:100px;
+    height:4px;
+    background:#333;
+    border-radius:2px;
+}
+
+.gallery-header p{
+    color:#666;
+    font-size:1rem;
+    margin-top:20px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);/* 3 column means 3 image in a row */
+    gap:30px;
+}
+
+.gallery-item{
+    position:relative;
+    border-radius:15px;
+    overflow:hidden;/* hidden img text */
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.gallery-image{
+    width:100%;
+    height:350px;
+    transition:transform 0.5s ease;/* delay of image zooming */
+}
+
+/* slightly zoom the image */
+
+.gallery-item:hover .gallery-image{
+    transform:scale(1.1);
+}
+
+/* img text */
+
+.img-text{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:rgba(0,0,0,0.5);
+    color:white;
+    text-align:center;
+    padding:10px;
+    font-size:1.2rem;
+    transform:translateY(100%);/*move element down to hide text*/
+    transition:0.3s;
+}
+
+/* show the image text on hover*/
+
+.gallery-item:hover .img-text{
+    transform:translateY(0);/* move up text to show */
+}
+
+/* Responsive */
+
+@media(max-width:992px){
+    .gallery-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .gallery-container{
+        padding:20px;
+    }
+
+    .gallery-header h1{
+        font-size:2.5rem;
+    }
+}
+@media(max-width:575px){
+    .gallery-grid{
+        grid-template-columns:1fr;
+    }
+}
